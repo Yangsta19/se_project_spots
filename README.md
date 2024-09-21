@@ -15,3 +15,4 @@ This is our first time navigating Figma while using our mastery in HTML, CSS, an
 This webpage is deployed to GitHub Pages
 
 - [Deployment Link](https://yangsta19.github.io/se_project_spots/)
+- [Youtube Link](https://youtu.be/Xf1eAJuj5sk)

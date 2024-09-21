@@ -8,12 +8,6 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
-.page {
-  min-width: 1100px;
-  max-width: 1600px;
-  font-family: Inter, Arial, sans-serif;
-}
-
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
