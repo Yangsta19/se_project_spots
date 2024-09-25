@@ -15,10 +15,20 @@
 
 @media screen and (max-width: 627px) {
   .cards {
-    width: 288px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 
   .card__list {
-    grid-template-columns: repeat(auto-fit, 288px);
+    grid-template-columns: repeat(1, 288px);
+    padding: 0 0 20px;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1750px) {
+  .cards__list {
+    grid-template-columns: repeat(3, 413px);
   }
 }
