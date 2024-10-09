@@ -38,6 +38,6 @@ function closeModal() {
   editModal.classList.remove("modal_opened");
 }
 
-profileEditButton.addEventListener("click", openModal());
+profileEditButton.addEventListener("click", openModal);
 
-editModalCloseButton.addEventListener("click", closeModal());
+editModalCloseButton.addEventListener("click", closeModal);
