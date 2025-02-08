@@ -93,9 +93,7 @@ function handleAddCardSubmit(evt) {
   const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
   const cardElement = getCardElement(inputValues);
 
-  // TO DO - make sure card appears at top of the list
-
-  cardsList.append(cardElement);
+  cardsList.prepend(cardElement);
   closeModal(editFormElement);
 }
 
