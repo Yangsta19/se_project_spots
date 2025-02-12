@@ -70,6 +70,7 @@
 
 .card__delete-btn:hover {
   background-image: url("../images/delete-icon-hover.svg");
+  cursor: pointer;
 }
 
 @media screen and (max-width: 627px) {
@@ -92,5 +93,8 @@
   .card__content {
     margin: 0 0 20px;
     width: 288px;
+  }
+  .card__delete-btn {
+    left: 246px;
   }
 }
