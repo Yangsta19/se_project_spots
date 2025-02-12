@@ -93,12 +93,10 @@ function getCardElement(data) {
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  previewModal.classList.add("modal_opened");
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  previewModal.classList.remove("modal_opened");
 }
 
 function handleEditFormSubmit(evt) {
