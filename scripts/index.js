@@ -80,8 +80,8 @@ function getCardElement(data) {
   cardImageElement.addEventListener("click", () => {
     openModal(previewModal);
     previewModalImageElement.src = data.link;
+    previewModalImageElement.alt = data.name;
     previewModalCaptionElement.textContent = data.name;
-    previewModalCaptionElement.alt = data.name;
   });
 
   cardDeleteBtn.addEventListener("click", () => {
@@ -112,8 +112,9 @@ function handleAddCardSubmit(evt) {
   const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
   const cardElement = getCardElement(inputValues);
 
+  evt.target.reset(inputValues);
   cardsList.prepend(cardElement);
-  closeModal(editFormElement);
+  closeModal(cardModal);
 }
 
 profileEditButton.addEventListener("click", () => {
@@ -125,6 +126,12 @@ profileEditButton.addEventListener("click", () => {
 editModalCloseButton.addEventListener("click", () => {
   closeModal(editModal);
 });
+
+// ANY HELP OR TIPS HERE IS APPRECIATED FOR THE UNIVERSAL CLOSE BUTTON
+// editModalCloseButton.forEach((button) => {
+//   const popup = button.closest(".modal__close-btn");
+//   button.addEventListener("click", () => closePopup(popup));
+// });
 
 cardModalButton.addEventListener("click", () => {
   openModal(cardModal);
@@ -145,3 +152,9 @@ initialCards.forEach((item) => {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
 });
+
+// THIS UNIVERSAL FUNCTION DID NOT WORK FOR ADDING THE CARDS. IS THERE AN ISSUE WITH MY FUNCTION?
+// function renderCard(item, method = "append") {
+//   const cardElement = getCardElement(item);
+//   cardsList[method](cardElement);
+// }

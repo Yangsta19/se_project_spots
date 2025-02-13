@@ -38,6 +38,7 @@
   height: 20px;
   border: none;
   background-color: transparent;
+  background-repeat: no-repeat;
   opacity: 40%;
 }
 
@@ -49,6 +50,8 @@
 .card__like-btn_liked {
   background-image: url("../images/like-icon-liked.svg");
   opacity: 1;
+  background-color: transparent;
+  background-repeat: no-repeat;
 }
 
 .card__like-btn_liked:hover {

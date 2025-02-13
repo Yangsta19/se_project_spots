@@ -42,8 +42,8 @@
 .modal__image {
   width: 100%;
   object-fit: contain;
-  max-width: 100vw;
-  max-height: 100vh;
+  max-width: 80vw;
+  max-height: 80vh;
   border-radius: 8px;
 }
 
@@ -78,6 +78,7 @@
 
 .modal__close-btn_type_preview {
   background-image: url(../images/close-icon-light.svg);
+  display: flex;
   justify-content: center;
   top: 0px;
   right: -52.5px;
@@ -166,8 +167,14 @@
     width: 100%;
   }
 
+  .modal__container_type_preview {
+    width: 100%;
+    padding: 0;
+  }
+
   .modal__image {
     border-radius: 4px;
+    max-width: 100vw;
   }
 
   .modal__caption {
@@ -178,7 +185,7 @@
 
   .modal__close-btn_type_preview {
     position: fixed;
-    top: 350px;
+    top: 420px;
     right: 16px;
   }
 }
