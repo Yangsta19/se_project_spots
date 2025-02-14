@@ -59,6 +59,8 @@ const previewModalCloseButton = document.querySelector(
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
 
+const closeButtons = document.querySelectorAll(".modal__close-btn");
+
 function getCardElement(data) {
   const cardElement = cardTemplate.content
     .querySelector(".card")
@@ -112,8 +114,8 @@ function handleAddCardSubmit(evt) {
   const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
   const cardElement = getCardElement(inputValues);
 
-  evt.target.reset(inputValues);
-  cardsList.prepend(cardElement);
+  evt.target.reset();
+  renderCard(inputValues, "prepend");
   closeModal(cardModal);
 }
 
@@ -127,11 +129,10 @@ editModalCloseButton.addEventListener("click", () => {
   closeModal(editModal);
 });
 
-// ANY HELP OR TIPS HERE IS APPRECIATED FOR THE UNIVERSAL CLOSE BUTTON
-// editModalCloseButton.forEach((button) => {
-//   const popup = button.closest(".modal__close-btn");
-//   button.addEventListener("click", () => closePopup(popup));
-// });
+closeButtons.forEach((button) => {
+  const popup = button.closest(".modal");
+  button.addEventListener("click", () => closeModal(popup));
+});
 
 cardModalButton.addEventListener("click", () => {
   openModal(cardModal);
@@ -148,13 +149,11 @@ previewModalCloseButton.addEventListener("click", () => {
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardFormElement.addEventListener("submit", handleAddCardSubmit);
 
-initialCards.forEach((item) => {
+function renderCard(item, method = "append") {
   const cardElement = getCardElement(item);
-  cardsList.append(cardElement);
-});
+  cardsList[method](cardElement);
+}
 
-// THIS UNIVERSAL FUNCTION DID NOT WORK FOR ADDING THE CARDS. IS THERE AN ISSUE WITH MY FUNCTION?
-// function renderCard(item, method = "append") {
-//   const cardElement = getCardElement(item);
-//   cardsList[method](cardElement);
-// }
+initialCards.forEach((item) => {
+  renderCard(item);
+});
