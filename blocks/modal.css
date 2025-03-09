@@ -128,6 +128,18 @@
   color: #212121;
 }
 
+.modal__error {
+  display: block;
+  margin: 8px 0 0;
+  color: #ff0000;
+  opacity: 70%;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.1;
+  letter-spacing: 0%;
+}
+
 .modal__submit-btn {
   width: 156px;
   padding: 18px 0;
