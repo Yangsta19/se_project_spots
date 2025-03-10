@@ -31,20 +31,19 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.disabled = true;
-    // Add modifier class to the buttonElement to make gray
-    // CSS  
-} else(
+    buttonElement.classList.add("modal__submit-btn_disabled");
+  } else {
     buttonElement.disabled = false;
-    // remove disabled class
-)
+    buttonElement.classList.remove("modal__submit-btn_disabled");
+  }
 };
 
-const setEventListeners = (formElement) => {
+function setEventListeners(formElement) {
   const inputList = Array.from(formElement.querySelectorAll(".modal__input"));
   const buttonElement = formElement.querySelector(".modal__submit-btn");
 
   //   To Do: Handle initial states
-  //   toggleButtonState(inputList, buttonElement);
+  toggleButtonState(inputList, buttonElement);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
@@ -52,7 +51,7 @@ const setEventListeners = (formElement) => {
       toggleButtonState(inputList, buttonElement);
     });
   });
-};
+}
 
 const enableValidation = () => {
   const formList = document.querySelectorAll(".modal__form");
