@@ -96,6 +96,12 @@ function getCardElement(data) {
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  disableButton(cardSubmitButton, settings);
+  resetValidation(
+    editFormElement,
+    [editModalNameInput, editModalDescriptionInput],
+    settings
+  );
 }
 
 function closeModal(modal) {
@@ -107,7 +113,6 @@ function handleEditFormSubmit(evt) {
   profileName.textContent = editModalNameInput.value;
   profileDescription.textContent = editModalDescriptionInput.value;
   evt.target.reset();
-  // To Do: pass settings object to the validation functions that are called in the file
   disableButton(cardSubmitButton, settings);
   closeModal(editModal);
 }
@@ -125,11 +130,11 @@ function handleAddCardSubmit(evt) {
 profileEditButton.addEventListener("click", () => {
   editModalNameInput.value = profileName.textContent;
   editModalDescriptionInput.value = profileDescription.textContent;
-  // resetValidation(
-  //   editFormElement,
-  //   [editModalNameInput, editModalDescriptionInput],
-  //   settings
-  // );
+  resetValidation(
+    editFormElement,
+    [editModalNameInput, editModalDescriptionInput],
+    settings
+  );
   openModal(editModal);
 });
 
