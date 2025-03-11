@@ -96,12 +96,6 @@ function getCardElement(data) {
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  disableButton(cardSubmitButton, settings);
-  resetValidation(
-    editFormElement,
-    [editModalNameInput, editModalDescriptionInput],
-    settings
-  );
 }
 
 function closeModal(modal) {
@@ -112,8 +106,6 @@ function handleEditFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = editModalNameInput.value;
   profileDescription.textContent = editModalDescriptionInput.value;
-  evt.target.reset();
-  disableButton(cardSubmitButton, settings);
   closeModal(editModal);
 }
 
@@ -124,17 +116,18 @@ function handleAddCardSubmit(evt) {
 
   evt.target.reset();
   renderCard(inputValues, "prepend");
+  disableButton(cardSubmitButton, settings);
+  resetValidation(
+    editFormElement,
+    [editModalNameInput, editModalDescriptionInput],
+    settings
+  );
   closeModal(cardModal);
 }
 
 profileEditButton.addEventListener("click", () => {
   editModalNameInput.value = profileName.textContent;
   editModalDescriptionInput.value = profileDescription.textContent;
-  resetValidation(
-    editFormElement,
-    [editModalNameInput, editModalDescriptionInput],
-    settings
-  );
   openModal(editModal);
 });
 
@@ -146,6 +139,8 @@ closeButtons.forEach((button) => {
 cardModalButton.addEventListener("click", () => {
   openModal(cardModal);
 });
+
+//Modal closes on overlay clicks for me
 
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardFormElement.addEventListener("submit", handleAddCardSubmit);
