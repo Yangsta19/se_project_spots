@@ -96,10 +96,12 @@ function getCardElement(data) {
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", handleKeydown);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleKeydown);
 }
 
 function handleEditFormSubmit(evt) {
@@ -154,11 +156,12 @@ initialCards.forEach((item) => {
   renderCard(item);
 });
 
-document.addEventListener("keydown", (event) => {
+function handleKeydown(event) {
   if (event.key === "Escape") {
     const openModal = document.querySelector(".modal.modal_opened");
     if (openModal) {
       closeModal(openModal);
+      document.removeEventListener("keydown", handleKeydown);
     }
   }
-});
+}
