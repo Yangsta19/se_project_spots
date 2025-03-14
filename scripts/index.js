@@ -104,7 +104,6 @@ function openModal(modal) {
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", handleKeydown);
-  modal.removeEventListener("mousedown", handleOverlayClick);
 }
 
 function handleEditFormSubmit(evt) {
@@ -122,11 +121,6 @@ function handleAddCardSubmit(evt) {
   evt.target.reset();
   renderCard(inputValues, "prepend");
   disableButton(cardSubmitButton, settings);
-  resetValidation(
-    editFormElement,
-    [editModalNameInput, editModalDescriptionInput],
-    settings
-  );
   closeModal(cardModal);
 }
 
@@ -167,7 +161,6 @@ function handleKeydown(event) {
     const openModal = document.querySelector(".modal.modal_opened");
     if (openModal) {
       closeModal(openModal);
-      document.removeEventListener("keydown", handleKeydown);
     }
   }
 }
