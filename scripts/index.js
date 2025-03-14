@@ -41,6 +41,8 @@ const editModalDescriptionInput = editModal.querySelector(
   "#profile-description-input"
 );
 
+const modals = document.querySelectorAll(".modal");
+
 const cardModalButton = document.querySelector(".profile__new-post-btn");
 const cardModal = document.querySelector("#add-card-modal");
 const cardFormElement = cardModal.querySelector(".modal__form");
@@ -102,6 +104,7 @@ function openModal(modal) {
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", handleKeydown);
+  modal.removeEventListener("mousedown", handleOverlayClick);
 }
 
 function handleEditFormSubmit(evt) {
@@ -147,8 +150,6 @@ cardModalButton.addEventListener("click", () => {
   openModal(cardModal);
 });
 
-//Modal closes on overlay clicks for me
-
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardFormElement.addEventListener("submit", handleAddCardSubmit);
 
@@ -170,3 +171,14 @@ function handleKeydown(event) {
     }
   }
 }
+
+function handleOverlayClick(event) {
+  const openModal = event.currentTarget;
+  if (event.target === openModal) {
+    closeModal(openModal);
+  }
+}
+
+modals.forEach((modal) => {
+  modal.addEventListener("mousedown", handleOverlayClick);
+});
